@@ -7059,6 +7059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  tilt: 3
 --- !u!4 &1868939074
 Transform:
   m_ObjectHideFlags: 0
@@ -7836,6 +7837,11 @@ Prefab:
         type: 2}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114083746736681538, guid: adabe296c2f1135408a86ffef503554d,
+        type: 2}
+      propertyPath: speed
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adabe296c2f1135408a86ffef503554d, type: 2}
