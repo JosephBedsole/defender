@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public Text livesText;
     public Text scoreText;
     public Text highScoreText;
+    public Text gameOverText;
 
     public int lives = 3;
     public int score = 0;
@@ -37,7 +39,14 @@ public class GameManager : MonoBehaviour {
     public static void LostBall() {
         Debug.Log("Meow... The Cat got the ball.");
         instance.lives = instance.lives - 1;
-        instance.livesText.text = "Lives: " + instance.lives;
+        if (instance.lives < 0)
+        {
+            instance.gameOverText.text = "You Lose";
+            instance.gameOverText.gameObject.SetActive(true);
+        }
+        else {
+            instance.livesText.text = "Lives: " + instance.lives;
+        }
    }
     public static void BrickBroken (int points) {
         instance.score += points;
