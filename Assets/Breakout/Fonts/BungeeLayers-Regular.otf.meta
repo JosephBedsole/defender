@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 7ebb3b81e6d480942bceced8b760b6fd
+timeCreated: 1486690554
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bungee Layers
+  fontNames:
+  - Bungee Layers
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
