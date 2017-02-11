@@ -35,7 +35,7 @@ public class BallController : MonoBehaviour {
 
             DeathCheck();
         }
-        else {
+        else  {
             if (Input.GetButton("Jump")) {
                 Launch();
             }
@@ -51,6 +51,11 @@ public class BallController : MonoBehaviour {
             else {
                 gameObject.SetActive(false);
             }
+        }
+
+        if (GameManager.instance.brickCount == 0)
+        {
+            gameObject.SetActive(false);
         }
     } 
 }

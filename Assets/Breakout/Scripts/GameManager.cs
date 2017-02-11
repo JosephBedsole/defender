@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
     public int score = 0;
     public int highScore = 0;
 
-    private int brickCount;
+    public int brickCount;
 
     private GameObject[] getCount;
 
@@ -59,7 +59,12 @@ public class GameManager : MonoBehaviour {
         instance.scoreText.text = "Score: " + instance.score;
         NewHighScore();
         BrickCount();
-   }
+        if (instance.brickCount == 0)
+        {
+            instance.winText.text = "You Win";
+            instance.winText.gameObject.SetActive(true);
+        }
+    }
     public static void NewHighScore() {
 
         if (instance.score > instance.highScore) {
@@ -73,11 +78,4 @@ public class GameManager : MonoBehaviour {
         instance.getCount = GameObject.FindGameObjectsWithTag("Bricks");
         instance.brickCount = instance.getCount.Length;
     }
-    private void Update() {
-        if (instance.brickCount == 0) {
-            instance.winText.text = "You Win";
-            instance.winText.gameObject.SetActive(true);
-        }
-
-    } 
 }
