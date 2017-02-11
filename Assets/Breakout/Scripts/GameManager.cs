@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
         BrickCount();
         if (instance.brickCount == 0)
         {
-            instance.winText.text = "You Win";
+            instance.winText.text = "You Win!";
             instance.winText.gameObject.SetActive(true);
         }
     }

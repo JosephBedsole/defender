@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 1516714087}
   - component: {fileID: 1516714090}
   - component: {fileID: 1516714089}
+  - component: {fileID: 1516714086}
   m_Layer: 5
   m_Name: PlayBox
   m_TagString: Untagged
@@ -595,6 +596,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -25, y: -23}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1516714086
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516714084}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f1280eb9601f0b04980a2763cd5aae40, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1516714087
 MonoBehaviour:
   m_ObjectHideFlags: 0

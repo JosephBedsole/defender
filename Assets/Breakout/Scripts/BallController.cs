@@ -57,5 +57,11 @@ public class BallController : MonoBehaviour {
         {
             gameObject.SetActive(false);
         }
-    } 
+    }    void OnCollisionEnter(Collision c)
+    {
+        ShakeController shake = Camera.main.gameObject.GetComponent<ShakeController>();
+        shake.Shake();
+
+    }
+
 }
