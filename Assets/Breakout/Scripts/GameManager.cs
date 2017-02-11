@@ -12,10 +12,15 @@ public class GameManager : MonoBehaviour {
     public Text scoreText;
     public Text highScoreText;
     public Text gameOverText;
+    public Text winText;
 
     public int lives = 3;
     public int score = 0;
     public int highScore = 0;
+
+    private int brickCount;
+
+    private GameObject[] getCount;
 
     void Awake () {
 
@@ -35,6 +40,7 @@ public class GameManager : MonoBehaviour {
         livesText.text = "Lives: " + lives;
         scoreText.text = "score: " + score;
         instance.highScoreText.text = "highScore: " + highScore;
+        BrickCount();
     }
     public static void LostBall() {
         Debug.Log("Meow... The Cat got the ball.");
@@ -52,6 +58,7 @@ public class GameManager : MonoBehaviour {
         instance.score += points;
         instance.scoreText.text = "Score: " + instance.score;
         NewHighScore();
+        BrickCount();
    }
     public static void NewHighScore() {
 
@@ -62,5 +69,15 @@ public class GameManager : MonoBehaviour {
         }
 
     }
-	
+    public static void BrickCount () {
+        instance.getCount = GameObject.FindGameObjectsWithTag("Bricks");
+        instance.brickCount = instance.getCount.Length;
+    }
+    private void Update() {
+        if (instance.brickCount == 0) {
+            instance.winText.text = "You Win";
+            instance.winText.gameObject.SetActive(true);
+        }
+
+    } 
 }
