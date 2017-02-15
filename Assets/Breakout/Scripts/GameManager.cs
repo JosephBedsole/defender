@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
 
+    public BrickController brickPrefab;
+    public int rows = 5;
+    public int columns = 10;
+
     public Text livesText;
     public Text scoreText;
     public Text highScoreText;
@@ -40,8 +44,22 @@ public class GameManager : MonoBehaviour {
         livesText.text = "Lives: " + lives;
         scoreText.text = "score: " + score;
         instance.highScoreText.text = "highScore: " + highScore;
+        CreateBricks();
         BrickCount();
     }
+    void CreateBricks() {
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < columns; col++)
+            {
+                BrickController brick = Instantiate(brickPrefab) as BrickController;
+                brick.transform.position = new Vector3(col, row, 0);
+            }
+        }
+        
+
+    }
+
     public static void LostBall() {
         Debug.Log("Meow... The Cat got the ball.");
         instance.lives = instance.lives - 1;

@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400060a23d81af24687b32e8c71dcfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticles: {fileID: 0}
+  paddleParticles: {fileID: 0}
   speed: 9
 --- !u!135 &135000822605039550
 SphereCollider:
