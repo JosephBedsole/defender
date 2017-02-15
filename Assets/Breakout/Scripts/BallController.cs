@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour {
 
+    public ParticleSystem hitParticlesPrefab;
     public float speed = 8;
 
     Rigidbody body;
@@ -57,10 +58,16 @@ public class BallController : MonoBehaviour {
         {
             gameObject.SetActive(false);
         }
-    }    void OnCollisionEnter(Collision c)
+    }
+    void OnCollisionEnter(Collision c)
     {
         ShakeController shake = Camera.main.gameObject.GetComponent<ShakeController>();
         shake.Shake();
+
+        ParticleSystem hitParticles = Instantiate(hitParticlesPrefab) as ParticleSystem;
+        hitParticles.transform.position = transform.position;
+        hitParticles.transform.up = body.velocity;
+        hitParticles.Play();
 
     }
 
