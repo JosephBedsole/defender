@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour {
     public BrickController brickPrefab;
     public int rows = 5;
     public int columns = 10;
+    public float edgePadding = 0.1f;
+    public float bottomPadding = 0.4f;
+    
+    List<BrickController> brickList = new List<BrickController>();
+
 
     public Text livesText;
     public Text scoreText;
@@ -48,12 +53,19 @@ public class GameManager : MonoBehaviour {
         BrickCount();
     }
     void CreateBricks() {
+        Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(edgePadding, bottomPadding, 0));
+        Vector3 topRight = Camera.main.ViewportToWorldPoint(new Vector3(1 - edgePadding, 1 - bottomPadding, 0));
+        bottomLeft.z = 0;
+        float w = (topRight.x - bottomLeft.x) / (float)columns;
+        float h = (topRight.y - bottomLeft.y) / (float) rows;
+
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < columns; col++)
             {
                 BrickController brick = Instantiate(brickPrefab) as BrickController;
-                brick.transform.position = new Vector3(col, row, 0);
+                brick.transform.position = bottomLeft + new Vector3((col + 0.5f) * w, (row + 0.5f)* h, 0);
+                brickList.Add(brick);
             }
         }
         
@@ -77,8 +89,17 @@ public class GameManager : MonoBehaviour {
         instance.scoreText.text = "Score: " + instance.score;
         NewHighScore();
         BrickCount();
-        if (instance.brickCount == 0)
-        {
+
+        bool hasWon = true;
+        for (int i = 0; i < instance.brickList.Count; i++) {
+            BrickController brick = instance.brickList[i];
+            if (brick.gameObject.activeSelf) {
+                hasWon = false;
+                break;
+            }
+        }
+
+        if (hasWon) {
             instance.winText.text = "You Win!";
             instance.winText.gameObject.SetActive(true);
         }
