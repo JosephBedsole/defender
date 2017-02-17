@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
     }
     void CreateBricks() {
         Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(edgePadding, bottomPadding, 0));
-        Vector3 topRight = Camera.main.ViewportToWorldPoint(new Vector3(1 - edgePadding, 1 - bottomPadding, 0));
+        Vector3 topRight = Camera.main.ViewportToWorldPoint(new Vector3(1 - edgePadding, 1 - edgePadding, 0));
         bottomLeft.z = 0;
         float w = (topRight.x - bottomLeft.x) / (float)columns;
         float h = (topRight.y - bottomLeft.y) / (float) rows;
