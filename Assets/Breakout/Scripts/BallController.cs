@@ -9,12 +9,20 @@ public class BallController : MonoBehaviour
     public ParticleSystem paddleParticles;
     public float speed = 8;
     List<ParticleSystem> particlePool = new List<ParticleSystem>();
+    public AudioSource sound;
+    public AudioClip brickSound;
+    public AudioClip paddleSound;
+    public AudioClip wallSound;
+    public AudioClip deathSound;
+    public Animation shakeLives;
+    
 
     Rigidbody body;
 
     void Start()
     {
         body = GetComponent<Rigidbody>();
+        sound = GetComponent<AudioSource>();
         PreLaunch();
     }
 
@@ -64,6 +72,10 @@ public class BallController : MonoBehaviour
             GameManager.LostBall();
             if (GameManager.instance.lives >= 0)
             {
+                sound.clip = deathSound;
+                sound.Play();
+                
+
                 PreLaunch();
             }
             else
@@ -92,8 +104,11 @@ public class BallController : MonoBehaviour
             paddleParticles.Stop();
             paddleParticles.transform.position = transform.position;
             paddleParticles.Play();
+
+            sound.clip = paddleSound;
+            sound.Play();
         }
-        else
+        else if (c.gameObject.tag == "Bricks")
         {
             ParticleSystem hitParticles = null;
             for (int i = 0; i < particlePool.Count; i++)
@@ -116,6 +131,14 @@ public class BallController : MonoBehaviour
             hitParticles.transform.up = body.velocity;
             hitParticles.transform.position = transform.position;
             hitParticles.Play();
+            sound.clip = brickSound;
+            sound.Play();
+        }
+        else {
+
+            sound.clip = wallSound;
+            sound.Play();
+
         }
     }
 }
