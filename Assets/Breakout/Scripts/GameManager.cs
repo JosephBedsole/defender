@@ -64,9 +64,12 @@ public class GameManager : MonoBehaviour {
         instance.highScoreText.text = "highScore: " + PlayerPrefs.GetInt("highScore");
         music = GetComponent<AudioSource>();
         CreateBricks();
+
+        instance.music.Stop();
         instance.music.clip = startNoise;
         instance.music.Play();
-        
+
+        instance.music.Stop();
         instance.music.clip = backgroundMusic;
         instance.music.Play();
     }
