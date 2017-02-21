@@ -7,6 +7,8 @@ public class BallController : MonoBehaviour
 
     public ParticleSystem hitParticlesPrefab;
     public ParticleSystem paddleParticles;
+    public ParticleSystem deathParticles;
+    public ParticleSystem scoreParticles;
     public float speed = 8;
     List<ParticleSystem> particlePool = new List<ParticleSystem>();
     public AudioSource sound;
