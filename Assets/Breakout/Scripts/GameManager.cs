@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     public BrickController brickPrefab;
-    public PowerupController powerupPrefab;
+    public GameObject powerUp;
 
     public int rows = 5;
     public int columns = 10;
@@ -65,19 +65,25 @@ public class GameManager : MonoBehaviour {
         music = GetComponent<AudioSource>();
         CreateBricks();
 
-        instance.music.Stop();
-        instance.music.clip = startNoise;
-        instance.music.Play();
+        //instance.music.clip = startNoise;
+        //instance.music.Play();
+
 
         instance.music.Stop();
         instance.music.clip = backgroundMusic;
         instance.music.Play();
     }
 
-    public static void CreatePowerup(Vector3 position)
+    private void Update()
     {
-        PowerupController powerup = Instantiate(instance.powerupPrefab) as PowerupController;
-        powerup.transform.position = position; 
+        HighScoreChanged();
+        
+    } 
+
+    void CreatePowerup()
+    {
+       GameObject power = Instantiate(powerUp);
+        power.transform.position = GameObject.FindGameObjectWithTag("Ball").transform.position; 
     }
 
     void CreateBricks() {
@@ -97,7 +103,11 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
-
+    public void AddLife()
+    {
+        instance.lives = instance.lives + 1;
+        livesText.text = "Lives: " + instance.lives;
+    }
     public static void LostBall() {
         Debug.Log("Meow... The Cat got the ball.");
         instance.lives = instance.lives - 1;
@@ -111,6 +121,7 @@ public class GameManager : MonoBehaviour {
             instance.music.Stop();
             instance.music.clip = instance.loseSound;
             instance.music.Play();
+            HighScoreSaved();
 
         }
         else {
@@ -120,8 +131,10 @@ public class GameManager : MonoBehaviour {
     public static void BrickBroken (int points) {
         instance.score += points;
         instance.scoreText.text = "Score: " + instance.score;
-        NewHighScore();
-
+        if (Random.value < 0.1)
+        {
+            instance.CreatePowerup();
+        }
         bool hasWon = true;
         for (int i = 0; i < instance.brickList.Count; i++) {
             BrickController brick = instance.brickList[i];
@@ -140,14 +153,36 @@ public class GameManager : MonoBehaviour {
             instance.music.Stop();
             instance.music.clip = instance.winSound;
             instance.music.Play();
+            HighScoreSaved();
         }
     }
-    public static void NewHighScore() {
-
-        if (instance.score > instance.highScore) {
+    public static void HighScoreChanged()
+    {
+        if(instance.score > instance.highScore) {
             instance.highScore = instance.score;
-            instance.highScoreText.text = "highScore " + instance.highScore;
         }
+        if (instance.highScore > PlayerPrefs.GetInt("highScore")) {
+            instance.highScoreText.text = "high Score " + instance.highScore;
+        }
+    }
+    public static void HighScoreSaved()
+    {
+        if (PlayerPrefs.HasKey("highScore") == true)
+        {
+            if (instance.highScore > PlayerPrefs.GetInt("highScore"))
+            {
+                int newHighScore = instance.highScore;
 
+                PlayerPrefs.SetInt("highScore", newHighScore);
+                PlayerPrefs.Save();
+            }
+        }
+        else
+        {
+            int newHighScore = instance.highScore;
+
+            PlayerPrefs.SetInt("highScore", newHighScore);
+            PlayerPrefs.Save();
+        }
     }
 }

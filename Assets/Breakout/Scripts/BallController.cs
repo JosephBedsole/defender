@@ -72,13 +72,17 @@ public class BallController : MonoBehaviour
         if (view.y < 0)
         {
             GameManager.LostBall();
+
             if (GameManager.instance.lives >= 0)
             {
                 sound.clip = deathSound;
                 sound.Play();
-                
 
                 PreLaunch();
+
+                deathParticles.Stop();
+                deathParticles.Play();
+
             }
             else
             {
@@ -100,7 +104,10 @@ public class BallController : MonoBehaviour
         ShakeController shake = Camera.main.gameObject.GetComponent<ShakeController>();
         shake.Shake();
 
-        
+        scoreParticles.Stop();
+        scoreParticles.Play();
+
+
         if (c.gameObject.tag == "Player")
         {
             paddleParticles.Stop();

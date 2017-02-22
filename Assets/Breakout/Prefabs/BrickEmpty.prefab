@@ -168,3 +168,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 10
+  powerupPrefab: {fileID: 0}
+  where: 0
