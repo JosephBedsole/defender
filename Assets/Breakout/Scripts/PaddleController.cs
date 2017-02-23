@@ -17,6 +17,9 @@ public class PaddleController : MonoBehaviour {
 
     new Renderer renderer;
 
+    public ParticleSystem thruster1;
+    public ParticleSystem thruster2;
+
     void Awake() {
         if (instance == null) {
             instance = this;
@@ -25,6 +28,10 @@ public class PaddleController : MonoBehaviour {
     private void Start()
     {
         renderer = GetComponentInChildren<Renderer>();
+
+        thruster1.Play();
+        thruster2.Play();
+
     } 
     void Update() {
         float x = Input.GetAxis("Horizontal");

@@ -43,8 +43,6 @@ public class GameManager : MonoBehaviour {
 
     private GameObject[] getCount;
 
-
-
     void Awake () {
 
         if (instance == null) {
