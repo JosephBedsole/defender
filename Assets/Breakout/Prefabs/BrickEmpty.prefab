@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4011105313393558}
   - component: {fileID: 54213744050450160}
   - component: {fileID: 114693813366203456}
+  - component: {fileID: 95671192634995004}
   m_Layer: 0
   m_Name: BrickEmpty
   m_TagString: Bricks
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1333020282573792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9, y: 0.98, z: 0}
+  m_LocalPosition: {x: -15.944419, y: -5.2418814, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4305109818716404}
@@ -139,6 +140,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.000001, y: 0.5000004, z: 0.5000004}
   m_Center: {x: 0, y: -0.00000005960466, z: -4.2351647e-21}
+--- !u!95 &95671192634995004
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333020282573792}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 250f452dfebf2a14dbf3f70b9ab03e46, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95956122977169490
 Animator:
   serializedVersion: 3

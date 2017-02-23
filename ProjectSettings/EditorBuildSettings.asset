@@ -8,4 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Breakout/Scenes/BreakoutMenu.unity
   - enabled: 1
-    path: Assets/Breakout/Scenes/BreakoutGameScene.unity
+    path: Assets/Breakout/Scenes/BreakoutGameScene (Level 1).unity
+  - enabled: 1
+    path: Assets/Breakout/Scenes/BreakoutGameScene (Level 2).unity

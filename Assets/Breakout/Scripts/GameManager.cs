@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     public BrickController brickPrefab;
-    public GameObject powerUp;
+    public GameObject[] powerUps;
+    [Range(0, 1)] public float powerupChance = 0.5f;
 
     public int rows = 5;
     public int columns = 10;
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour {
 
     void CreatePowerup()
     {
-       GameObject power = Instantiate(powerUp);
+        GameObject power = Instantiate(powerUps[Random.Range(0,powerUps.Length)]);
         power.transform.position = GameObject.FindGameObjectWithTag("Ball").transform.position; 
     }
 
@@ -131,7 +132,7 @@ public class GameManager : MonoBehaviour {
     public static void BrickBroken (int points) {
         instance.score += points;
         instance.scoreText.text = "Score: " + instance.score;
-        if (Random.value < 0.1)
+        if (Random.value < instance.powerupChance)
         {
             instance.CreatePowerup();
         }

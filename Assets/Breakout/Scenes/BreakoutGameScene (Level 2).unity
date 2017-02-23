@@ -993,8 +993,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brickPrefab: {fileID: 114693813366203456, guid: 26cc12839cb513a4e84313016fcd9b6e,
     type: 2}
-  powerUp: {fileID: 1164203938046962, guid: 87268c8728ce95746a22ec587e4ece14, type: 2}
-  rows: 5
+  powerUps: []
+  powerupChance: 0.5
+  rows: 7
   columns: 11
   edgePadding: 0.1
   bottomPadding: 0.4
@@ -1104,6 +1105,10 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!4 &1103498705 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+  m_PrefabInternal: {fileID: 1802425600}
 --- !u!1001 &1153496337
 Prefab:
   m_ObjectHideFlags: 0
@@ -1620,6 +1625,56 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1001 &1802425600
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1868939074}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.1499996
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7386253205e0bf54690b723a576869f8, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1001 &1842148364
 Prefab:
   m_ObjectHideFlags: 0
@@ -1703,10 +1758,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerName: Powerup
+  stretchable: {fileID: 0}
   sound: {fileID: 0}
   powerUp: {fileID: 8300000, guid: 3934c7ff76e752d408751ca5d3311219, type: 3}
-  powerUp2: {fileID: 0}
-  powerUp3: {fileID: 0}
+  powerUp2: {fileID: 8300000, guid: aabe5f45ea0add5469c665075f154256, type: 3}
+  powerUp3: {fileID: 8300000, guid: b0cd9a55093d86142a9b8c341ddd7561, type: 3}
   speed: 10
   tilt: 3
 --- !u!4 &1868939074
@@ -1716,10 +1772,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1868939072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.03, z: 0}
+  m_LocalPosition: {x: 0, y: -3.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1747534519}
+  - {fileID: 1103498705}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1919,7 +1976,7 @@ Prefab:
     - target: {fileID: 114083746736681538, guid: adabe296c2f1135408a86ffef503554d,
         type: 2}
       propertyPath: speed
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114083746736681538, guid: adabe296c2f1135408a86ffef503554d,
         type: 2}

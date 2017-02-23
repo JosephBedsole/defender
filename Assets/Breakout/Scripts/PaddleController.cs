@@ -6,7 +6,7 @@ public class PaddleController : MonoBehaviour {
 
     public static PaddleController instance;
     public string triggerName = "Powerup";
-
+    public Transform stretchable;
     public AudioSource sound;
     public AudioClip powerUp;
     public AudioClip powerUp2;
@@ -15,7 +15,7 @@ public class PaddleController : MonoBehaviour {
     public float speed = 100;
     public float tilt = 3;
 
-    Renderer renderer;
+    new Renderer renderer;
 
     void Awake() {
         if (instance == null) {
@@ -47,7 +47,7 @@ public class PaddleController : MonoBehaviour {
     void OnTriggerEnter(Collider c)
     {
 
-        if (c.gameObject.tag == "Powerup")
+        if (c.gameObject.tag == "Powerup") // addLife
         {
             GameManager.instance.AddLife();
             Debug.Log("1up");
@@ -55,18 +55,16 @@ public class PaddleController : MonoBehaviour {
             sound.clip = powerUp;
             sound.Play();
 
-            gameObject.SetActive(false);
-
         }
-        else if (c.gameObject.tag == "Powerup2")
+        else if (c.gameObject.tag == "Powerup2") //growPaddle
         {
-            transform.localScale = new Vector3(2, 1, 1);
+            stretchable.localScale = new Vector3(2, 1, 1);
             sound.clip = powerUp2;
             sound.Play();
         }
-        else
+        else if (c.gameObject.tag == "Powerup3") //shrinkPaddle
         {
-            transform.localScale = new Vector3(.5f, .25f, .25f);
+            stretchable.localScale = new Vector3(.5f, 1, 1);
 
             sound.clip = powerUp3;
             sound.Play();

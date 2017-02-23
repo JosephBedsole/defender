@@ -38,7 +38,7 @@ public class BallController : MonoBehaviour
     void Launch()
     {
         transform.SetParent(null);
-        body.velocity = transform.up * speed;
+        body.velocity = Vector3.up * speed;
     }
     private void Update()
     {
