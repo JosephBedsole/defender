@@ -1356,7 +1356,7 @@ MonoBehaviour:
   - {fileID: 1164203938046962, guid: 87268c8728ce95746a22ec587e4ece14, type: 2}
   - {fileID: 1164203938046962, guid: 9861364fae8d2414982385753e9279cc, type: 2}
   - {fileID: 1164203938046962, guid: 3b5dbf618023d5f499e334f0823e19ea, type: 2}
-  powerupChance: 0.5
+  powerupChance: 0.099
   rows: 5
   columns: 11
   edgePadding: 0.1
