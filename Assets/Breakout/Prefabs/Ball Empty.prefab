@@ -110,7 +110,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1029705699067128}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54937852561699236
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -137,9 +137,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 400060a23d81af24687b32e8c71dcfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitParticles: {fileID: 0}
+  hitParticlesPrefab: {fileID: 0}
   paddleParticles: {fileID: 0}
+  deathParticles: {fileID: 0}
+  scoreParticles: {fileID: 0}
   speed: 9
+  sound: {fileID: 0}
+  brickSound: {fileID: 0}
+  paddleSound: {fileID: 0}
+  wallSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  shakeLives: {fileID: 0}
 --- !u!135 &135000822605039550
 SphereCollider:
   m_ObjectHideFlags: 1
