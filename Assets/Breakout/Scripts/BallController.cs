@@ -144,6 +144,34 @@ public class BallController : MonoBehaviour
             sound.clip = brickSound;
             sound.Play();
         }
+        else if (c.gameObject.tag == "Bricks 2") {
+            scoreParticles.Stop();
+            scoreParticles.Play();
+
+            ParticleSystem hitParticles = null;
+            for (int i = 0; i < particlePool.Count; i++)
+            {
+                ParticleSystem p = particlePool[i];
+                if (p.isStopped)
+                {
+                    hitParticles = p;
+                    Debug.Log("reusing from my pool");
+                    break;
+                }
+            }
+
+            if (hitParticles == null)
+            {
+                hitParticles = Instantiate(hitParticlesPrefab) as ParticleSystem;
+                particlePool.Add(hitParticles);
+            }
+
+            hitParticles.transform.up = body.velocity;
+            hitParticles.transform.position = transform.position;
+            hitParticles.Play();
+            sound.clip = brickSound;
+            sound.Play();
+        }
         else {
 
             sound.clip = wallSound;
