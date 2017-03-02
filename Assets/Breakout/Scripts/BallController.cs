@@ -42,6 +42,7 @@ public class BallController : MonoBehaviour
     }
     private void Update()
     {
+        WinCheck();
         if (transform.parent == null)
         {
             Vector3 v = body.velocity;
@@ -54,7 +55,6 @@ public class BallController : MonoBehaviour
 
             transform.up = v;
             transform.localScale = new Vector3(0.9f, 1.1f, 1);
-
             DeathCheck();
         }
         else
@@ -64,6 +64,13 @@ public class BallController : MonoBehaviour
             {
                 Launch();
             }
+        }
+    }
+    void WinCheck()
+    {
+        if (GameManager.instance.winText.gameObject.activeSelf == true)
+        {
+            gameObject.SetActive(false);
         }
     }
     void DeathCheck()
