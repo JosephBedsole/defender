@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
 
-    public BrickController brickPrefab;
+    public BrickController[] brickPrefab;
     public GameObject[] powerUps;
     [Range(0, 1)] public float powerupChance = 0.5f;
 
@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour {
     public int lives = 3;
     public int score = 0;
     public int highScore = 0;
+
+    public int hitCount = 0;
 
     public int brickCount
     {
@@ -59,8 +61,8 @@ public class GameManager : MonoBehaviour {
     }
     void Start() {
         livesText.text = "Lives: " + lives;
-        scoreText.text = "score: " + score;
-        instance.highScoreText.text = "highScore: " + PlayerPrefs.GetInt("highScore");
+        scoreText.text = "Score: " + score;
+        instance.highScoreText.text = "HighScore: " + PlayerPrefs.GetInt("HighScore");
         music = GetComponent<AudioSource>();
         CreateBricks();
 
@@ -96,16 +98,24 @@ public class GameManager : MonoBehaviour {
         {
             for (int col = 0; col < columns; col++)
             {
-                BrickController brick = Instantiate(brickPrefab) as BrickController;
+                BrickController brick = Instantiate(brickPrefab[Random.Range(0, brickPrefab.Length)]) as BrickController;
                 brick.transform.position = bottomLeft + new Vector3((col + 0.5f) * w, (row + 0.5f)* h, 0);
                 brickList.Add(brick);
             }
         }
     }
+   
     public void AddLife()
     {
-        instance.lives = instance.lives + 1;
-        livesText.text = "Lives: " + instance.lives;
+        if (instance.lives < 5)
+        {
+            instance.lives = instance.lives + 1;
+            livesText.text = "Lives: " + instance.lives;
+        }
+        else
+        {
+
+        }
     }
     public static void LostBall() {
         Debug.Log("Meow... The Cat got the ball.");
@@ -115,7 +125,7 @@ public class GameManager : MonoBehaviour {
             instance.gameOverText.text = "You Lose";
             instance.gameOverText.gameObject.SetActive(true);
 
-            PlayerPrefs.SetInt("highScore", instance.score);
+            PlayerPrefs.SetInt("HighScore", instance.score);
 
             instance.music.Stop();
             instance.music.clip = instance.loseSound;
@@ -147,7 +157,7 @@ public class GameManager : MonoBehaviour {
             instance.winText.text = "You Win!";
             instance.winText.gameObject.SetActive(true);
 
-            PlayerPrefs.SetInt("highScore", instance.score);
+            PlayerPrefs.SetInt("HighScore", instance.score);
 
             instance.music.Stop();
             instance.music.clip = instance.winSound;
@@ -160,19 +170,19 @@ public class GameManager : MonoBehaviour {
         if(instance.score > instance.highScore) {
             instance.highScore = instance.score;
         }
-        if (instance.highScore > PlayerPrefs.GetInt("highScore")) {
+        if (instance.highScore > PlayerPrefs.GetInt("HighScore")) {
             instance.highScoreText.text = "high Score " + instance.highScore;
         }
     }
     public static void HighScoreSaved()
     {
-        if (PlayerPrefs.HasKey("highScore") == true)
+        if (PlayerPrefs.HasKey("HighScore") == true)
         {
-            if (instance.highScore > PlayerPrefs.GetInt("highScore"))
+            if (instance.highScore > PlayerPrefs.GetInt("HighScore"))
             {
                 int newHighScore = instance.highScore;
 
-                PlayerPrefs.SetInt("highScore", newHighScore);
+                PlayerPrefs.SetInt("HighScore", newHighScore);
                 PlayerPrefs.Save();
             }
         }
@@ -180,7 +190,7 @@ public class GameManager : MonoBehaviour {
         {
             int newHighScore = instance.highScore;
 
-            PlayerPrefs.SetInt("highScore", newHighScore);
+            PlayerPrefs.SetInt("HighScore", newHighScore);
             PlayerPrefs.Save();
         }
     }

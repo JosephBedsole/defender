@@ -66,16 +66,21 @@ public class PaddleController : MonoBehaviour {
         else if (c.gameObject.tag == "Powerup2") //growPaddle
         {
             stretchable.localScale = new Vector3(2, 1, 1);
+            StartCoroutine("ReverseChange");
             sound.clip = powerUp2;
             sound.Play();
         }
         else if (c.gameObject.tag == "Powerup3") //shrinkPaddle
         {
             stretchable.localScale = new Vector3(.5f, 1, 1);
-
             sound.clip = powerUp3;
             sound.Play();
         }
         //gameObject.SetActive(false);
     }
+    IEnumerator ReverseChange() {
+        yield return new WaitForSeconds(10);
+        stretchable.localScale = new Vector3(1, 1, 1);
+    }
 }
+

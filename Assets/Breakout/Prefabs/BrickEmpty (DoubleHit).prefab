@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 114693813366203456}
   - component: {fileID: 95671192634995004}
   m_Layer: 0
-  m_Name: BrickEmpty
-  m_TagString: Bricks
+  m_Name: BrickEmpty (DoubleHit)
+  m_TagString: Bricks 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 65769107121580654}
   m_Layer: 0
   m_Name: UFOLayout
-  m_TagString: Bricks
+  m_TagString: Bricks 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 55ed94937815d364485cf1f7fd82073f, type: 2}
+  - {fileID: 2100000, guid: fadb328c00a329e428aa954934779168, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -188,4 +188,4 @@ MonoBehaviour:
   points: 10
   powerupPrefab: {fileID: 0}
   where: 0
-  hitCount: 1
+  hitCount: 2

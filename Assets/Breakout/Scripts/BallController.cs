@@ -104,9 +104,7 @@ public class BallController : MonoBehaviour
         ShakeController shake = Camera.main.gameObject.GetComponent<ShakeController>();
         shake.Shake();
 
-        scoreParticles.Stop();
-        scoreParticles.Play();
-
+        
 
         if (c.gameObject.tag == "Player")
         {
@@ -119,6 +117,9 @@ public class BallController : MonoBehaviour
         }
         else if (c.gameObject.tag == "Bricks")
         {
+            scoreParticles.Stop();
+            scoreParticles.Play();
+
             ParticleSystem hitParticles = null;
             for (int i = 0; i < particlePool.Count; i++)
             {

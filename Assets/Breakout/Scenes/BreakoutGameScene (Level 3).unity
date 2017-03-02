@@ -1409,8 +1409,8 @@ MonoBehaviour:
   - {fileID: 1164203938046962, guid: 0ce6731e6c2d8624a836ebaad25710f0, type: 2}
   - {fileID: 1164203938046962, guid: 96b718f23f0996a4a8175dab945a64ea, type: 2}
   powerupChance: 0.099
-  rows: 3
-  columns: 10
+  rows: 7
+  columns: 11
   edgePadding: 0.1
   bottomPadding: 0.4
   livesText: {fileID: 165292665}
@@ -2499,7 +2499,7 @@ Prefab:
     - target: {fileID: 114083746736681538, guid: adabe296c2f1135408a86ffef503554d,
         type: 2}
       propertyPath: speed
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114083746736681538, guid: adabe296c2f1135408a86ffef503554d,
         type: 2}
